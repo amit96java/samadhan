@@ -2,17 +2,29 @@ package com.samadhan.controller;
 
 
 import com.samadhan.request.LoginRequest;
+import com.samadhan.service.GaadiService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
 @RequestMapping(value = "/gaadi-dikhao")
 public class GaadiController {
 
-    @PostMapping(value =  "/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    @Autowired
+    private GaadiService gaadiService;
 
-        return ResponseEntity.ok("");
+    @GetMapping(value = "/status")
+    public ResponseEntity<String> status() {
+        return ResponseEntity.ok("service is up");
+    }
+
+    @PostMapping(value =  "/login")
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws Exception {
+       String resp = gaadiService.login(loginRequest);
+       return ResponseEntity.ok(resp);
+
+
     }
 }
