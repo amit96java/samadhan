@@ -3,7 +3,7 @@ package com.samadhan.controller;
 import com.samadhan.dto.ServiceCentreDetails;
 import com.samadhan.exception.ServiceCentreException;
 import com.samadhan.response.GeneralResponse;
-import com.samadhan.trait.ServiceCentreService;
+import com.samadhan.service.ServiceCentreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
